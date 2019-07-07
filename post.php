@@ -20,7 +20,7 @@
                 <h3 class="post-title"><?php $this->title() ?></h3>
                 <div class="post-meta"><span><i class="glyphicon glyphicon-time"
                             aria-hidden="true"></i><?php $this->date('Y.m.d'); ?></span><span><i class="glyphicon glyphicon-eye-open"
-                            aria-hidden="true"></i><?php $this->viewsNum();?> 次阅读</span><span><i class="glyphicon glyphicon-comment"
+                            aria-hidden="true"></i> 次阅读</span><span><i class="glyphicon glyphicon-comment"
                             aria-hidden="true"></i><?php $this->commentsNum('暂无评论', '1 条评论', '%d 条评论'); ?></span></div>
                 <div class="post-body">
                     <?php

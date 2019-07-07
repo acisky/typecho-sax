@@ -2,10 +2,8 @@
 timer_start();
 function themeConfig($form) {
     $bannerId = new Typecho_Widget_Helper_Form_Element_Text('bannerId', NULL, NULL, _t('文章ID'), _t('切换效果的文章id，用,分割'));
-    $gameList = new Typecho_Widget_Helper_Form_Element_Textarea('gameList', NULL, NULL, _t('首页排行'), _t('显示首页排行列表，用|分割'));
     $beian = new Typecho_Widget_Helper_Form_Element_Textarea('beian', NULL, NULL, _t('备案号'), _t('可以放置备案号或者统计'));
     $form->addInput($bannerId);
-    $form->addInput($gameList);
     $form->addInput($beian);
 }
 
@@ -131,12 +129,12 @@ function filterLevel($text) {
             echo '<li><em class="level'.$num.'">'.$num.'</em>'.$array[$x].'</li>';
         } else {
             echo '<li><em>'.$num.'</em>'.$array[$x].'</li>';
-        } 
+        }
     }
 }
 
 function getId($id) {
-    $getid = explode(',',$id);	
+    $getid = explode(',',$id);
     $db = Typecho_Db::get();
     $result = $db->fetchAll($db->select()->from('table.fields')
         ->join('table.contents', 'table.contents.cid = table.fields.cid',Typecho_Db::INNER_JOIN)
@@ -175,7 +173,7 @@ function renderBanner($text,$class='banner',$size=80) {
         $desc = mb_substr($val['text'], 0, $size, 'utf-8');
         $permalink = $val['permalink'];
         $img = $val['str_value'];
-        
+
         echo '<a href="'.$permalink.'">';
         echo '<div class="banner-pic" style="background-image:url('.$img.')"></div>';
         echo '<div class="carousel-caption">';
@@ -206,7 +204,38 @@ function getRecentPosts($obj,$pageSize){
     foreach($rows as $row){
         $cid = $row['cid'];
         $apost = $obj->widget('Widget_Archive@post_'.$cid, 'type=post', 'cid='.$cid);
-        $output = '<li><a href="'.$apost->permalink .'">'. $apost->title .'</a></li>';
+        $output = '<li><a href="'.$apost->permalink .'"><span>' . date('Y-m-d', $apost->created) . '</span>'. $apost->title .'</a></li>';
+        echo $output;
+    }
+}
+
+function gethotPosts($obj,$pageSize) {
+    $db = Typecho_Db::get();
+    $rows = $db->fetchAll($db->select()->from('table.contents')
+        ->where('type = ?', 'post')
+        ->where('status = ?', 'publish')
+        ->limit($pageSize)
+        ->order('commentsNum', Typecho_Db::SORT_DESC));
+    foreach($rows as $row){
+        $cid = $row['cid'];
+        $apost = $obj->widget('Widget_Archive@post_'.$cid, 'type=post', 'cid='.$cid);
+        $output = '<li><a href="'.$apost->permalink .'"><span>' . date('Y-m-d', $apost->created) . '</span>'. $apost->title .'</a></li>';
+        echo $output;
+    }
+}
+
+function getRandomPosts($obj,$pageSize){
+    $db = Typecho_Db::get();
+    $rows = $db->fetchAll($db->select()->from('table.contents')
+        ->where('status = ?','publish')
+        ->where('type = ?', 'post')
+        ->where('created <= unix_timestamp(now())', 'post')
+        ->limit($pageSize)
+        ->order('RAND()'));
+    foreach($rows as $row){
+        $cid = $row['cid'];
+        $apost = $obj->widget('Widget_Archive@post_'.$cid, 'type=post', 'cid='.$cid);
+        $output = '<li><a href="'.$apost->permalink .'"><span>' . date('Y-m-d', $apost->created) . '</span>'. $apost->title .'</a></li>';
         echo $output;
     }
 }
@@ -220,7 +249,7 @@ function get_postthumb($obj) {
     }elseif(isset($matches[1][0])){
         $thumb = $matches[1][0];
     } else {
-        $thumb = Helper::options()->themeUrl."/thumb/thumb.jpg";
+        $thumb = '';
     }
     return $thumb;
 }

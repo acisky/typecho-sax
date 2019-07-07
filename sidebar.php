@@ -18,14 +18,14 @@
             <div class="tab-pane fade" role="tabpanel" id="hot">
                 <div class="side-list">
                     <ul>
-                    <?php TePostViews_Plugin::outputHotPosts() ?>
+                    <?php gethotPosts($this,8) ?>
                     </ul>
                 </div>
             </div>
             <div class="tab-pane fade" role="tabpanel" id="random">
                 <div class="side-list">
                     <ul>
-                    <?php RandomArticleList::parse(); ?>
+                    <?php getRandomPosts($this,8); ?>
                     </ul>
                 </div>
             </div>
@@ -33,20 +33,41 @@
     </div>
     <div id="sticker">
     <?php if($this->is('index')): ?>
-        <?php if($this->options->gameList){ ?>
         <div class="panel">
             <div class="panel-heading">
-                <h5>游戏排行榜</h5>
+                <h5>评论列表</h5>
             </div>
             <div class="panel-body">
-                <div class="rank-list">
+                <div class="side-comments">
                     <ul>
-                    <?php filterLevel($this->options->gameList) ?>
+                    <?php $this->widget('Widget_Comments_Recent','ignoreAuthor=true&pageSize=5')->to($comments); ?>
+                    <?php while($comments->next()): ?>
+                        <li>
+                            <?php
+                                //头像CDN by Rich
+                                $host = 'https://gravatar.loli.net'; //自定义头像CDN服务器
+                                $url = '/avatar/'; //自定义头像目录,一般保持默认即可
+                                $rating = Helper::options()->commentsAvatarRating;
+                                $hash = md5(strtolower($comments->mail));
+                                $email = strtolower($comments->mail);
+                                $qq=str_replace('@qq.com','',$email);
+                                if(strstr($email,"qq.com") && is_numeric($qq) && strlen($qq) < 11 && strlen($qq) > 4)
+                                {
+                                    $avatar = '//q.qlogo.cn/g?b=qq&nk='.$qq.'&s=100';
+                                }else{
+                                    $avatar = $host . $url . $hash . '&r=' . $rating . '&d=mm';
+                                }
+
+                                echo '<img src="' . $avatar . '" class="avatar" />';
+                            ?>
+                            <p class="author"><a href="<?php $comments->permalink(); ?>" class="label"><?php $comments->author(false); ?></a><small><?php echo date('Y-m-d', $comments->created) ?></small></p>
+                            <p class="excerpt"><?php $comments->excerpt(30, '...'); ?></p>
+                        </li>
+                    <?php endwhile; ?>
                     </ul>
                 </div>
             </div>
         </div>
-        <?php }  ?>
     <?php elseif($this->is('post')): ?>
         <div class="panel">
             <div class="panel-body">

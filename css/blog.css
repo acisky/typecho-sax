@@ -112,7 +112,7 @@ body {
     background: #ffffff;
     border: 0;
     margin: 0;
-    transition: all 0.5s;
+    transition: top,box-shadow 0.5s;
 }
 
 .header-page .navbar-nav>li>a {
@@ -151,7 +151,7 @@ body {
 
 .footer p a {
     color: #2c3e50;
-    transition: all 0.5s;
+    transition: color 0.5s;
 }
 
 .footer p a:hover {
@@ -185,7 +185,7 @@ body {
     box-shadow: 0 20px 40px -15px rgba(0, 0, 0, .05);
     padding: 20px;
     position: relative;
-    transition: all 0.3s;
+    transition: box-shadow 0.3s;
 }
 
 .card:hover {
@@ -208,7 +208,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    transition: all 0.5s;
+    transition: transform 0.5s;
 }
 
 .card .card-thumb:hover .thumb-pic {
@@ -218,6 +218,11 @@ body {
 .card .card-inner {
     height: 150px;
     padding-left: 240px;
+}
+
+.nothumb-card .card-inner {
+    padding:0;
+    height: auto;
 }
 
 .card .card-inner h5 {
@@ -256,7 +261,7 @@ body {
 
 .card .card-inner .meta a {
     color: #8a94ac;
-    transition: all 0.5s;
+    transition: color 0.5s;
 }
 
 .card .card-inner .meta span i {
@@ -393,8 +398,9 @@ body {
 
 .post .post-body {
     font-size: 15px;
-    line-height: 25px;
+    line-height: 28px;
     margin-top: 10px;
+    padding:0 20px;
     padding-top: 10px;
     border-top: 1px solid #f2f2f2;
 }
@@ -410,7 +416,24 @@ body {
 .post .post-body h5 {
     position: relative;
     color: #04152c;
-    transition: all 0.3s;
+    transition: padding 0.3s;
+    font-size: 20px;
+    border-bottom: 2px solid #F2F2F2;
+    cursor: auto;
+}
+
+.post .post-body h1,
+.post .post-body h2,
+.post .post-body h3 {
+    font-size: 20px;
+}
+
+.post .post-body h4 {
+    font-size: 18px;
+}
+
+.post .post-body h5 {
+    font-size: 16px;
 }
 
 .post .post-body h1:before,
@@ -430,7 +453,7 @@ body {
     font-size: 24px;
     opacity: 0;
     text-align: left;
-    transition: all 0.5s;
+    transition: opacity,transform 0.5s;
 }
 
 .post .post-body h1:hover,
@@ -466,7 +489,7 @@ body {
 }
 
 .post .post-body table tr {
-    transition: all 0.5s;
+    transition: transform,box-shadow 0.5s;
 }
 
 .post .post-body table tr:hover {
@@ -507,6 +530,7 @@ body {
 .post .post-body img {
     width: 100%;
     vertical-align: top;
+    margin: 15px 0;
 }
 
 .post .post-tags {
@@ -577,7 +601,7 @@ body {
     color: #fff;
     background-color: #40b771;
     border-color: #40b771;
-    transition: all 0.3s;
+    transition: transform,box-shadow 0.3s;
 }
 
 .comments-form .btn-default:hover {
@@ -627,7 +651,7 @@ body {
 .cancel-comment-reply a {
     font-size: 14px;
     color: #777398;
-    transition: all 0.5s;
+    transition: color 0.5s;
 }
 
 .cancel-comment-reply a:hover {
@@ -637,7 +661,7 @@ body {
 
 .comment-user a {
     color: #2c3e50;
-    transition: all 0.5s;
+    transition: color 0.5s;
 }
 
 .comment-user a:hover {
@@ -691,7 +715,7 @@ body {
 .comment-time a {
     font-size: 12px;
     color: #8a94ac;
-    transition: all 0.5s;
+    transition: color 0.5s;
 }
 
 .comment-time a:hover {
@@ -707,7 +731,7 @@ body {
 .comment-reply a {
     font-size: 12px;
     color: #2c3e50;
-    transition: all 0.5s;
+    transition: color 0.5s;
 }
 
 .comment-reply a:hover {
@@ -758,7 +782,7 @@ body {
     padding: 15px;
     font-size: 16px;
     color: #04152c;
-    transition: all 0.5s;
+    transition: color 0.5s;
 }
 
 .side-tab .nav>li>a i {
@@ -805,7 +829,7 @@ body {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    transition: all 0.5s;
+    transition: color 0.5s;
 }
 
 .side-list ul li a:hover {
@@ -821,6 +845,52 @@ body {
     position: absolute;
     right: 0;
     top: 0;
+}
+
+.side-comments ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.side-comments ul li {
+    position: relative;
+    padding: 10px 0;
+    padding-left: 50px;
+    border-bottom: 1px solid #F2F2F2;
+}
+
+.side-comments ul li .avatar {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    left:0;
+    top:10px;
+    border-radius: 100%;
+}
+
+.side-comments ul li .author .label {
+    font-weight: normal;
+    background: #EEEEEE;
+    color: #666666;
+    transition: background,color 0.5s;
+}
+
+.side-comments ul li .author .label:hover {
+    background: #CCCCCC;
+    color:#FFFFFF;
+}
+
+.side-comments ul li .author small {
+    font-size: 12px;
+    color: #999999;
+    margin-left: 10px;
+}
+
+.side-comments ul li .excerpt {
+    font-size: 14px;
+    margin: 0;
+    margin-top: 5px;
 }
 
 .sidebar .panel {
@@ -849,7 +919,7 @@ body {
 }
 
 .sidebar .panel .panel-body {
-    padding: 20px;
+    padding: 10px 20px;
 }
 
 .rank-list ul {
@@ -923,7 +993,7 @@ body {
     line-height: 30px;
     color: #555555;
     text-align: center;
-    transition: all 0.5s;
+    transition: color 0.5s;
 }
 
 .near-list ul li strong {
