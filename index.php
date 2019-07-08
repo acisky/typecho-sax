@@ -1,6 +1,6 @@
 <?php
 /**
- * 根据默认皮肤修改的主题
+ * 基于Bootstrap的一款typecho主题
  *
  * @package Typecho Sax Theme
  * @author Aci
