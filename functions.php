@@ -244,7 +244,9 @@ function get_postthumb($obj) {
     preg_match_all( "/<[img|IMG].*?src=[\'|\"](.*?)[\'|\"].*?[\/]?>/", $obj->content, $matches );
     $thumb = '';
     $attach = $obj->attachments(1)->attachment;
-    if (isset($attach->isImage) && $attach->isImage == 1){
+    if($obj->fields->img) {
+        $thumb = $obj->fields->img;
+    }elseif(isset($attach->isImage) && $attach->isImage == 1){
         $thumb = $attach->url;
     }elseif(isset($matches[1][0])){
         $thumb = $matches[1][0];

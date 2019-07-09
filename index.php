@@ -19,17 +19,13 @@ $this->need('header.php');
 				<?php renderBanner($this->options->bannerId); ?>
 			<?php }  ?>
 			<?php while($this->next()): ?>
-			<?php if(get_postthumb($this) == '' && !$this->fields->img): ?>
+			<?php if(get_postthumb($this) == ''): ?>
 			<div class="card nothumb-card">
 			<?php else: ?>
 			<div class="card">
 			<?php endif; ?>
 				<a href="<?php $this->permalink() ?>" class="card-thumb">
-				<?php if($this->fields->img): ?>
-					<div class="thumb-pic lazyload"
-					data-original="<?php $this->fields->img(); ?>">
-					</div>
-				<?php elseif(get_postthumb($this) != ''): ?>
+				<?php if(get_postthumb($this) != ''): ?>
 				<div class="thumb-pic lazyload"
 					data-original="<?php echo get_postthumb($this) ?>">
 					</div>
