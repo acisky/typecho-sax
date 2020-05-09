@@ -1,12 +1,4 @@
 @font-face {
-    font-family: "Nintendo";
-    src: url("../fonts/nintendo.eot");
-    src: url("../fonts/nintendo.eot?#iefix") format("embedded-opentype"), url("../fonts/nintendo.woff") format("woff"), url("../fonts/nintendo.ttf") format("truetype"), url("../fonts/nintendo.svg#uxfonteditor") format("svg");
-    font-weight: normal;
-    font-style: normal
-}
-
-@font-face {
     font-family: "Satisfy";
     src: url("../fonts/Satisfy-Regular.eot");
     src: local("☺"), url("../fonts/Satisfy-Regular.woff") format("woff"), url("../fonts/Satisfy-Regular.ttf") format("truetype"), url("../fonts/Satisfy-Regular.svg") format("svg");
@@ -14,11 +6,16 @@
     font-style: normal
 }
 
+html,
+body {
+    height: 100%;
+}
+
 body {
     padding-top: 120px;
     background: #eceef1;
     color: #2c3e50;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',     Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',     'Segoe UI Symbol';
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 }
 
 @media only screen and (max-width: 767px) {
@@ -48,6 +45,10 @@ body {
 
 .lazyload {
     background: #f5f5f5;
+}
+
+.no-data {
+    
 }
 
 .header-top {
@@ -113,7 +114,7 @@ body {
     background: #ffffff;
     border: 0;
     margin: 0;
-    transition: top,box-shadow 0.5s;
+    transition: top, box-shadow 0.5s;
 }
 
 .header-page .navbar-nav>li>a {
@@ -158,6 +159,10 @@ body {
 .footer p a:hover {
     text-decoration: none;
     color: #2d72d9;
+}
+
+.main {
+    min-height: calc(100vh - 238px);
 }
 
 .banner {
@@ -222,7 +227,7 @@ body {
 }
 
 .nothumb-card .card-inner {
-    padding:0;
+    padding: 0;
     height: auto;
 }
 
@@ -284,6 +289,10 @@ body {
     margin-top: 5px;
 }
 
+.nothumb-card .card-inner .desc {
+    height: auto;
+}
+
 @media only screen and (max-width: 768px) {
     .card .card-thumb {
         width: 100%;
@@ -304,6 +313,9 @@ body {
         padding-top: 200px;
     }
 
+    .nothumb-card .card-inner {
+        padding: 0;
+    }
 }
 
 .pages {
@@ -399,9 +411,9 @@ body {
 .post .post-body {
     font-size: 15px;
     line-height: 28px;
-    margin-top: 10px;
-    padding:0 20px;
+    margin-top: 0 -15px;
     padding-top: 10px;
+    margin-top: 10px;
     border-top: 1px solid #f2f2f2;
 }
 
@@ -451,7 +463,7 @@ body {
     font-size: 24px;
     opacity: 0;
     text-align: left;
-    transition: opacity,transform 0.5s;
+    transition: opacity, transform 0.5s;
 }
 
 .post .post-body h1:hover,
@@ -487,7 +499,7 @@ body {
 }
 
 .post .post-body table tr {
-    transition: transform,box-shadow 0.5s;
+    transition: transform, box-shadow 0.5s;
 }
 
 .post .post-body table tr:hover {
@@ -599,7 +611,7 @@ body {
     color: #fff;
     background-color: #40b771;
     border-color: #40b771;
-    transition: transform,box-shadow 0.3s;
+    transition: transform, box-shadow 0.3s;
 }
 
 .comments-form .btn-default:hover {
@@ -823,6 +835,7 @@ body {
     display: block;
     height: 30px;
     line-height: 30px;
+    padding-right: 100px;
     color: #2c3e50;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -862,8 +875,8 @@ body {
     width: 32px;
     height: 32px;
     position: absolute;
-    left:0;
-    top:10px;
+    left: 0;
+    top: 10px;
     border-radius: 100%;
 }
 
@@ -871,12 +884,12 @@ body {
     font-weight: normal;
     background: #EEEEEE;
     color: #666666;
-    transition: background,color 0.5s;
+    transition: background, color 0.5s;
 }
 
 .side-comments ul li .author .label:hover {
     background: #CCCCCC;
-    color:#FFFFFF;
+    color: #FFFFFF;
 }
 
 .side-comments ul li .author small {
@@ -1091,7 +1104,7 @@ body {
     width: 2px;
 }
 
-.timeline .al_mon_list > li {
+.timeline .al_mon_list>li {
     position: relative;
     padding-left: 40px;
     padding-bottom: 40px;
@@ -1107,18 +1120,18 @@ body {
     font-size: 10px;
     color: #ffffff;
     position: absolute;
-    left:0;
-    top:0;
+    left: 0;
+    top: 0;
 }
 
 .timeline .al_mon_list .al_post_list {
     list-style: none;
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
 }
 
 .timeline .al_mon_list .al_post_list li {
-    padding:5px 0;
+    padding: 5px 0;
 }
 
 .timeline .al_mon_list .al_post_list li .label-default {
@@ -1135,3 +1148,136 @@ body {
     margin-left: 10px;
 }
 
+.link-list .item a {
+    display: block;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    border-radius: 6px;
+    -webkit-box-shadow: 0 20px 40px -15px rgba(0, 0, 0, .05);
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, .05);
+    padding: 15px 20px;
+    padding-left: 80px;
+    position: relative;
+    transition: box-shadow 0.3s;
+    text-decoration: none;
+}
+
+.link-list .item a .favicon {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    margin-top: -25px;
+}
+
+.link-list .item a .favicon img {
+    width: 50px;
+    height: 50px;
+    vertical-align: top;
+}
+
+.link-list .item a p {
+    font-size: 14px;
+    margin: 0;
+    height: 20px;
+    line-height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.link-list .item a span {
+    display: block;
+    font-size: 12px;
+    color: #999999;
+    margin-top: 5px;
+    height: 16px;
+    line-height: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.link-list .item a:hover {
+    -webkit-box-shadow: 0 4px 25px 0 rgba(0, 0, 0, .1);
+    box-shadow: 0 4px 25px 0 rgba(0, 0, 0, .1);
+}
+
+.photo-item {
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    border-radius: 6px;
+    -webkit-box-shadow: 0 20px 40px -15px rgba(0, 0, 0, .05);
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, .05);
+    padding: 20px;
+    position: relative;
+    transition: box-shadow 0.3s;
+    text-decoration: none; 
+}
+
+.photo-item .photo-box {
+    display: block;
+    height: 180px;
+    overflow: hidden;
+}
+
+.photo-item .thumb-pic {
+    height: 180px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: transform 0.5s;
+}
+
+.photo-item:hover .thumb-pic {
+    transform: scale(1.05);
+}
+
+.photo-item h5 {
+    margin: 0;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.photo-item h5 a {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 30px;
+    line-height: 30px;
+    font-size: 18px;
+    color: #04152c;
+}
+
+.photo-item h5 a:hover {
+    text-decoration: none;
+    color: #2d72d9;
+}
+
+.photo-item .photo-meta {
+    height: 20px;
+    line-height: 20px;
+    margin-top: 5px;
+}
+
+.photo-item .photo-meta span {
+    margin-right: 15px;
+    color: #8a94ac;
+    font-size: 12px;
+}
+
+.photo-item .photo-meta a {
+    color: #8a94ac;
+    transition: color 0.5s;
+}
+
+.photo-item .photo-meta span i {
+    margin-right: 5px;
+}
+
+.photo-item .photo-meta a:hover {
+    text-decoration: none;
+    color: #2d72d9;
+}

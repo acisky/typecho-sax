@@ -3,7 +3,7 @@
 
 <div class="container main">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-9">
             <?php
                 $categories = $this->categories;
                 foreach($categories as $cate) {
@@ -20,7 +20,7 @@
                 <h3 class="post-title"><?php $this->title() ?></h3>
                 <div class="post-meta"><span><i class="glyphicon glyphicon-time"
                             aria-hidden="true"></i><?php $this->date('Y.m.d'); ?></span><span><i class="glyphicon glyphicon-eye-open"
-                            aria-hidden="true"></i> 次阅读</span><span><i class="glyphicon glyphicon-comment"
+                            aria-hidden="true"></i>0 次阅读</span><span><i class="glyphicon glyphicon-comment"
                             aria-hidden="true"></i><?php $this->commentsNum('暂无评论', '1 条评论', '%d 条评论'); ?></span></div>
                 <div class="post-body">
                     <?php
@@ -30,9 +30,11 @@
                         echo $content;
                     ?>
                 </div>
+                <?php if(count($this->tags) > 0 ): ?>
                 <div class="post-tags">
                     <i class="glyphicon glyphicon-tags"></i><span><?php tags($this); ?></span>
                 </div>
+                <?php endif; ?>
             </div>
             <?php $this->need('comments.php'); ?>
         </div>

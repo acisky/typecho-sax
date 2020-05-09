@@ -1,6 +1,6 @@
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
- * Copyright 2011-2019 Twitter, Inc.
+ * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
@@ -1600,7 +1600,7 @@ pre code {
 }
 @media (min-width: 992px) {
   .container {
-    width: 960px;
+    width: 1060px;
   }
 }
 @media (min-width: 1200px) {

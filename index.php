@@ -24,13 +24,11 @@ $this->need('header.php');
 			<?php else: ?>
 			<div class="card">
 			<?php endif; ?>
-				<a href="<?php $this->permalink() ?>" class="card-thumb">
 				<?php if(get_postthumb($this) != ''): ?>
-				<div class="thumb-pic lazyload"
-					data-original="<?php echo get_postthumb($this) ?>">
-					</div>
+					<a href="<?php $this->permalink() ?>" class="card-thumb">
+						<div class="thumb-pic lazyload" data-original="<?php echo get_postthumb($this) ?>"></div>
+					</a>
 				<?php endif; ?>
-				</a>
 				<div class="card-inner">
 					<h5><a href="<?php $this->permalink() ?>"><?php $this->title() ?></a></h5>
 					<div class="meta"><span><i class="glyphicon glyphicon-time"
