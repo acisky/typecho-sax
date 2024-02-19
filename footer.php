@@ -3,9 +3,9 @@
 <footer class="footer">
     <div class="container">
         <p>
-            <?php _e('Powered by <a href="http://www.typecho.org" target="_blank">Typecho</a>'); ?>
+            <?php _e('Powered by <a href="https://www.typecho.org" target="_blank">Typecho</a>'); ?>
             <em> · </em>
-            <?php _e('Theme <a href="http://www.aciuz.com" target="_blank">Sax</a>'); ?>
+            <?php _e('Theme <a href="https://www.aciuz.com" target="_blank">Sax</a>'); ?>
             Processed in <?php echo timer_stop(false,4) ?> second(s)
             <em> · </em>
             Gzip <?php echo is_Gzip()?'ON':'OFF' ?>
